@@ -2,26 +2,9 @@ import React from 'react';
 import { useNavigate, Link } from "react-router-dom";
 
 function GoTo(props) {
-  // let history = useHistory();
-  // history.push(this.props.url)
+
 };
 
-// class Button extends React.Component {
-
-//     render() {
-//       return (
-//           // below is equivelant to 
-//           // onClick = {function() {
-//           // console.log('click');
-//           // }}
-//           <button className = "Button" onClick={() => console.log("Clicked")}>
-//             {this.props.text}
-//             <span class = "fas fa-chevron-right"></span>
-//             <i class = "fas fa-notes-medical"></i>
-//             </button>
-//       );
-//     }
-//   }
   
   class Title extends React.Component {
     render() {
@@ -56,18 +39,17 @@ function GoTo(props) {
 //   }
 
   class Container extends React.Component {
+    
     render() {
+      const link = this.props.link;
+      console.log(link)
       return (
           <div className = 'box'>
             <i className = "fas fa-notes-medical"></i>
             <h3> {this.props.title}</h3>
             <p> {this.props.text} </p>    
 
-            {/* <button class = "btn" onClick={() => console.log("Clicked")}>
-             {this.props.button} <span className = "fas fa-chevron-right"></span>
-          </button> */}
-
-          <Link to = "/search"><a href  = "#" className = "btn" onClick = {(e) => GoTo("/search")} > {this.props.button}<span className = {this.props.icon}></span> </a> </Link>
+          <Link to = {link} ><a href  = "#" className = "btn" onClick = {(e) => GoTo("/search")} > {this.props.button}<span className = {this.props.icon}></span> </a> </Link>
           </div>
   
       );
@@ -79,7 +61,7 @@ const container1 = <Container title = "Self-diagnosis"
                               text = "Not feeling well? We will help" 
                               button = "Start Here"
                               icon = "fas fa-notes-medical"
-                              onClick = ""/>
+                              link = "/search"/>
 
 
 const container2 = <Container title = "Profile" 
@@ -105,8 +87,8 @@ export default function Services() {
             <h1 class="heading"> our <span>services</span> </h1>
             <div className = "box-container">
                 {container1}
-                {container2}
-                {container3}
+                {/* {container2}
+                {container3} */}
             </div>
         </section>
     );

@@ -14,13 +14,37 @@ const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the records.
 recordRoutes.route("/record").get(function (req, res) {
-  let db_connect = dbo.getDb("medicine");
+  console.log("Fetching medication")
+  let db_connect = dbo.getDb("myFirstDatabase");
   db_connect
-    .collection("records")
+    .collection("medications")
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
+    });
+});
+
+recordRoutes.route("/userRecommendation/add").get(function (req, res) {
+  console.log("Storing recommended medication")
+  // let db_connect = dbo.getDb("myFirstDatabase");
+  // db_connect
+  //   .collection("userMedications")
+  //   .find({})
+  //   .toArray(function (err, result) {
+  //     if (err) throw err;
+  //     res.json(result);
+  //   });
+
+    let db_connect = dbo.getDb("myFirstDatabase");
+    let myobj = {
+      user: req.body.medicine,
+      medication: req.body.symptom,
+      level: req.body.level,
+    };
+    db_connect.collection("userMedications").insertOne(myobj, function (err, res) {
+      if (err) throw err;
+      response.json(res);
     });
 });
 

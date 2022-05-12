@@ -18,6 +18,31 @@ const frequency = ["1-2", "3-5", "7+ days"]
 
 
 
+  async function onSubmit(e) {
+    e.preventDefault();
+  
+    // When a post request is sent to the create url, we'll add a new record to the database.
+    // const newPerson = { ...form };
+    
+    const newMedication = {
+
+    }
+    await fetch("http://localhost:5000/userRecommendation/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newMedication),
+    })
+    .catch(error => {
+      window.alert(error);
+      return;
+    });
+  
+    // setForm({ name: "", position: "", level: "" });
+    // navigate("/");
+  }
+
 const Search = () =>  {
 
     /* ------------ STATES ------------*/
@@ -498,7 +523,6 @@ const Search = () =>  {
                 <div id="Treatment"> 
                 <Routes>
                     <Route exact path="/" element={<RecordList symptom = {mainSymptom}/>} />
-                    {/* <Route exact path="/" element={<RecordList />} /> */}
                  </Routes>
 {/* 
                 <h3>Medication Recommendation</h3>
