@@ -6,7 +6,7 @@ ExpressJS (Creating endpoint services that interact with database)
 ReactJS (Front-end)
 NodeJS (Back-end server)
 
-Example of endpoints:
+Example of endpoints for updating medical records:
 ```
 // This section will help you get a single record by id
 recordRoutes.route("/record/:id").get(function (req, res) {
@@ -59,9 +59,8 @@ recordRoutes.route("/update/:id").post(function (req, response) {
 });
 ```
 
+Example of front-end component for displaying records:
 ```
-Example of front-end component:
-
 export default function RecordList(props) {
  const [records, setRecords] = useState([]);
 
